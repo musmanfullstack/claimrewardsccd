@@ -20,7 +20,7 @@ export default function SubmitXPost() {
       </div>
       {number < 3 && (
         <div
-          className={`h-[2px] min-w-16 ${
+          className={`h-[2px] w-12 sm:w-24 md:w-32 ${
             active ? "bg-teal-500" : "bg-gray-700"
           }`}
         ></div>
@@ -29,53 +29,47 @@ export default function SubmitXPost() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-4 sm:p-6 flex flex-col">
-      <header className="mb-4 ">
-        <button className="text-gray-400 hover:text-gray-200 transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-      </header>
-
-      <main className="flex-grow flex flex-col items-center space-y-6 sm:space-y-8 max-w-2xl mx-auto w-full">
-        <div className="flex justify-center space-x-2">
+    <div className="min-h-screen bg-[#14181D] text-gray-100 pt-[64px]  flex flex-col">
+      <main className="flex-grow flex flex-col items-center  max-w-2xl mx-auto w-full">
+        <div className="flex justify-center ">
           <ProgressStep number={1} active={true} />
           <ProgressStep number={2} active={false} />
           <ProgressStep number={3} active={false} />
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-center">
+        <h1 className="text-2xl sm:text-[24px] mt-[32px] mb-[24px] font-bold text-center">
           Submit X Post Link
         </h1>
 
-        <div className="w-full max-w-[427px] space-y-4">
-          <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
+        <div className="w-full max-w-[339px] space-y-4">
+          <div className="bg-transparent px-[14px] pb-[12px] pt-[8px] border-[#71797E] border rounded-[12px]  ">
             <label
               htmlFor="post-link"
-              className="block text-sm font-medium text-gray-400 mb-2"
+              className="block text-[12px] font-medium text-gray-400 "
             >
               Paste link here
             </label>
             <input
               type="text"
               id="post-link"
-              className="w-full bg-gray-700 text-white p-2 sm:p-3 rounded-md"
+              className="w-full bg-transparent text-white outline-none  rounded-md"
               placeholder="https://x.com/coingecko/status/181499..."
             />
           </div>
 
-          <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
+          <div className="bg-transparent w-[339px]  border border-[#71797E]  py-[12px] px-[12px]  rounded-[14px] ">
             <h2 className="text-lg sm:text-xl font-semibold">Details</h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-300 text-sm sm:text-base">
+            <ul className="list-disc list-inside  text-gray-300 text-[14px] ">
               <li>
-                Your post should contain the #Concordium hashtag and mention
-                @ConcordiumNet
+                Your post should contain the #Concordium hashtag and mention{" "}
+                <span className="text-blue-500 ">@ConcordiumNet</span>
               </li>
               <li>The text can be anything you want</li>
               <li>Use the template below or write your own</li>
             </ul>
 
-            <div className="mt-3 sm:mt-4 bg-gray-700 p-3 sm:p-4 rounded-lg relative">
-              <button className="flex justify-center items-center gap-1 absolute top-2 right-2 bg-gray-600 p-2 rounded-md hover:bg-gray-500 transition-colors">
+            <div className="p-[16px] bg-[#1A1F21] mt-[12px] rounded-lg relative">
+              <button className="flex justify-center items-center gap-1 absolute top-2 right-2 bg-[#383E40] p-2 rounded-md hover:bg-gray-500 transition-colors">
                 <Copy size={16} />
                 <div>Copy</div>
               </button>
@@ -88,15 +82,17 @@ export default function SubmitXPost() {
                   className="rounded-full mr-2"
                 />
                 <div>
-                  <p className="font-semibold">Yourname</p>
-                  <p className="text-gray-400 text-sm">@yournickname</p>
+                  <p className="font-semibold text-[11px]">Yourname</p>
+                  <p className="text-gray-400 text-[11px">@yournickname</p>
                 </div>
               </div>
-              <p className="text-sm sm:text-base">
+              <p className="text-[12px] font-normal">
                 Just created my @ConcordiumNet account and received 1000 $CCD
                 reward! Go to concordium.com/wallet to get yours!
               </p>
-              <p className="text-teal-500 text-sm sm:text-base">#Concordium</p>
+              <p className="text-teal-500 text-[11px] font-normal">
+                #Concordium
+              </p>
               <p className="text-gray-400 text-xs sm:text-sm">
                 XX:XX PM · Aug XX, 2024
               </p>
@@ -104,7 +100,7 @@ export default function SubmitXPost() {
           </div>
         </div>
 
-        <button className="bg-white text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs">
+        <button className="bg-white mt-[96px] text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs">
           <Link href="/proof">Continue</Link>
         </button>
       </main>

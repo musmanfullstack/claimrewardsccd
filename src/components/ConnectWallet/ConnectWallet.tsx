@@ -201,7 +201,7 @@ const ProgressStep = ({
   number: number;
   active: boolean;
 }) => (
-  <div className="flex items-center ">
+  <div className="flex items-center">
     <div
       className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
         active ? "bg-teal-500 text-gray-900" : "bg-gray-700 text-gray-400"
@@ -211,7 +211,7 @@ const ProgressStep = ({
     </div>
     {number < 3 && (
       <div
-        className={`h-[2px] w-[139px] ${
+        className={`h-[2px] w-12 sm:w-24 md:w-32 ${
           active ? "bg-teal-500" : "bg-gray-700"
         }`}
       ></div>
@@ -285,7 +285,7 @@ export default function ConnectWallet() {
   };
 
   return (
-    <div className="min-h-screen bg-[#14181D] text-white p-6">
+    <div className="min-h-screen bg-[#14181D] text-white pt-[64px]">
       <div className="flex  justify-center mb-8">
         <ProgressStep number={1} active={true} />
         <ProgressStep number={2} active={false} />
@@ -306,7 +306,7 @@ export default function ConnectWallet() {
               Connect your wallet
             </h1>
 
-            <div className=" max-w-[339px]">
+            <div className=" space-y-4 max-w-[339px]">
               <WalletOption
                 icon={icon}
                 name="Browser Wallet"
@@ -325,12 +325,14 @@ export default function ConnectWallet() {
                 }
               />
               {qrCodeUrl && (
-                <div className="bg-[#1B2323] flex flex-col   items-center">
-                  <p className="mb-4 text-center flex flex-row items-center ">
+                <div className="bg-[#1B2323] flex flex-col  p-2 items-center rounded-lg">
+                  <p className="mb-4 text-center flex flex-row text-[14px] items-center ">
                     Scan the QR code Or{" "}
-                    <button className="flex bg-[#383E40] p-2 rounded-md ml-2">
-                      Tap here <ArrowLeft className="-rotate-180 ml-2" />
+                     <Link href={"/twiter"}>
+                    <button className="flex bg-[#383E40] justify-center items-center text-[14px] p-2 rounded-md ml-2">
+                     Tap here <ArrowLeft size={14} className="-rotate-180 ml-2 text-[14px]" />
                     </button>
+                     </Link> 
                   </p>
                   <Image
                     src={qrCodeUrl}
@@ -357,9 +359,6 @@ export default function ConnectWallet() {
           </div>
         </>
       )}
-      <button className="float-right">
-        <Link href="/twiter">Next</Link>
-      </button>
     </div>
   );
 }
