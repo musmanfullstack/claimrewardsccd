@@ -1,5 +1,5 @@
 import React from "react";
-import image1 from "../../../../public/Images/Slide 16_9 - 13.png";
+// import image1 from "../../../../public/Images/Slide 16_9 - 13.png";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 
@@ -7,8 +7,9 @@ export default function Final() {
   return (
     <div className="relative w-screen h-screen">
       <Image
-        src={image1}
+        src="/Images/Slide 16_9 - 13.png"
         alt="image"
+        layout="fill"
         className="w-screen h-screen object-cover"
       />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center max-w-[339px] mx-auto">

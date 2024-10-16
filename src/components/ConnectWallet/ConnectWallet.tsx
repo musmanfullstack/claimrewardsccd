@@ -192,6 +192,7 @@ import QRCode from "qrcode";
 
 import icon from "../../../public/Images/Frame 1958.png";
 import icon2 from "../../../public/Images/asdadas.png";
+import Link from "next/link";
 
 const ProgressStep = ({
   number,
@@ -285,11 +286,11 @@ export default function ConnectWallet() {
 
   return (
     <div className="min-h-screen bg-[#14181D] text-white p-6">
-        <div className="flex  justify-center mb-8">
-              <ProgressStep number={1} active={true} />
-              <ProgressStep number={2} active={false} />
-              <ProgressStep number={3} active={false} />
-            </div>
+      <div className="flex  justify-center mb-8">
+        <ProgressStep number={1} active={true} />
+        <ProgressStep number={2} active={false} />
+        <ProgressStep number={3} active={false} />
+      </div>
       {next ? (
         <div className="flex flex-col items-center justify-center min-h-screen">
           <div className="max-w-[339px]">
@@ -301,8 +302,6 @@ export default function ConnectWallet() {
       ) : (
         <>
           <div className="max-w-[339px] mx-auto">
-            
-
             <h1 className="text-2xl font-semibold mb-8 text-center">
               Connect your wallet
             </h1>
@@ -358,6 +357,9 @@ export default function ConnectWallet() {
           </div>
         </>
       )}
+      <button className="float-right">
+        <Link href="/twiter">Next</Link>
+      </button>
     </div>
   );
 }

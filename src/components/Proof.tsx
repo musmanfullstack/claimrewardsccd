@@ -1,4 +1,5 @@
 import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link';
 
 export default function ProofOfEligibility() {
   const ProgressStep = ({ number, active }: { number: number; active: boolean }) => (
@@ -59,7 +60,8 @@ export default function ProofOfEligibility() {
         </div>
         
         <button className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs mt-28">
-          Verify
+        <Link href="/eligibility">Verify</Link>
+          
         </button>
       </main>
     </div>

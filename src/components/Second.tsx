@@ -1,4 +1,4 @@
-import { ArrowLeft, Twitter } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Component() {
@@ -11,12 +11,12 @@ export default function Component() {
       </header>
       
       <main className="flex-grow flex flex-col items-center justify-center space-y-8">
-        <h1 className="text-4xl font-bold text-emerald-300 text-center">
+        <h1 className="text-4xl font-bold text-[#A2CAC1] text-center">
           Concordium Rewards
         </h1>
         
         <div className="flex items-center space-x-4">
-          <div className="bg-emerald-300 rounded-full p-4">
+          <div className="bg-[#A2CAC1] rounded-full p-4">
            <Image src="/Images/twitter.png" alt="twitter" width={24} height={24} className="text-gray-900"></Image>
           </div>
           <div className="bg-gray-700 rounded-full p-4">
@@ -31,7 +31,7 @@ export default function Component() {
         </div>
         
         <div className="max-w-md w-full">
-          <h2 className="text-xl font-semibold text-emerald-300 mb-4">
+          <h2 className="text-xl font-semibold text-[#A2CAC1] mb-4">
             Create post on X and get 1,000 CCD:
           </h2>
           <ol className="space-y-3 list-decimal list-inside">
@@ -42,7 +42,9 @@ export default function Component() {
         </div>
         
         <button className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors">
+          <a href="/connnectwallet">
           Get started
+          </a>
         </button>
       </main>
     </div>

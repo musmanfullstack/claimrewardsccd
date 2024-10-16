@@ -1,14 +1,29 @@
-import { ArrowLeft, Copy } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowLeft, Copy } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function SubmitXPost() {
-  const ProgressStep = ({ number, active }: { number: number; active: boolean }) => (
+  const ProgressStep = ({
+    number,
+    active,
+  }: {
+    number: number;
+    active: boolean;
+  }) => (
     <div className="flex items-center">
-      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${active ? 'bg-teal-500 text-gray-900' : 'bg-gray-700 text-gray-400'}`}>
+      <div
+        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
+          active ? "bg-teal-500 text-gray-900" : "bg-gray-700 text-gray-400"
+        }`}
+      >
         {number}
       </div>
       {number < 3 && (
-        <div className={`h-[2px] min-w-16 ${active ? 'bg-teal-500' : 'bg-gray-700'}`}></div>
+        <div
+          className={`h-[2px] min-w-16 ${
+            active ? "bg-teal-500" : "bg-gray-700"
+          }`}
+        ></div>
       )}
     </div>
   );
@@ -28,11 +43,16 @@ export default function SubmitXPost() {
           <ProgressStep number={3} active={false} />
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-center">Submit X Post Link</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-center">
+          Submit X Post Link
+        </h1>
 
         <div className="w-full max-w-[427px] space-y-4">
           <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
-            <label htmlFor="post-link" className="block text-sm font-medium text-gray-400 mb-2">
+            <label
+              htmlFor="post-link"
+              className="block text-sm font-medium text-gray-400 mb-2"
+            >
               Paste link here
             </label>
             <input
@@ -46,7 +66,10 @@ export default function SubmitXPost() {
           <div className="bg-gray-800 p-3 sm:p-4 rounded-lg">
             <h2 className="text-lg sm:text-xl font-semibold">Details</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-300 text-sm sm:text-base">
-              <li>Your post should contain the #Concordium hashtag and mention @ConcordiumNet</li>
+              <li>
+                Your post should contain the #Concordium hashtag and mention
+                @ConcordiumNet
+              </li>
               <li>The text can be anything you want</li>
               <li>Use the template below or write your own</li>
             </ul>
@@ -70,17 +93,19 @@ export default function SubmitXPost() {
                 </div>
               </div>
               <p className="text-sm sm:text-base">
-                Just created my @ConcordiumNet account and received 1000 $CCD reward! Go to
-                concordium.com/wallet to get yours!
+                Just created my @ConcordiumNet account and received 1000 $CCD
+                reward! Go to concordium.com/wallet to get yours!
               </p>
               <p className="text-teal-500 text-sm sm:text-base">#Concordium</p>
-              <p className="text-gray-400 text-xs sm:text-sm">XX:XX PM · Aug XX, 2024</p>
+              <p className="text-gray-400 text-xs sm:text-sm">
+                XX:XX PM · Aug XX, 2024
+              </p>
             </div>
           </div>
         </div>
 
         <button className="bg-white text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs">
-          Continue
+          <Link href="/proof">Continue</Link>
         </button>
       </main>
     </div>
