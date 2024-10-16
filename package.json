@@ -11,7 +11,10 @@
   "dependencies": {
     "lucide-react": "^0.453.0",
     "next": "14.2.15",
+<<<<<<< HEAD
     "qrcode": "^1.5.4",
+=======
+>>>>>>> 88155a1891093daa19623edc86fcb03715388886
     "react": "^18",
     "react-dom": "^18"
   },
