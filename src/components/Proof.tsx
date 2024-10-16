@@ -35,19 +35,19 @@ export default function ProofOfEligibility() {
           </p>
           
           <ul className="space-y-2 text-gray-300 ">
-            <li className="flex items-center border-b border-gray-400  border-b-[1px] mb-2">
+            <li className="flex items-center  border-gray-400  border-b-[1px] mb-2">
               <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
               Your full name
             </li>
-            <li className="flex items-center border-b border-gray-400  border-b-[1px] mb-2">
+            <li className="flex items-center  border-gray-400  border-b-[1px] mb-2">
               <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
               Your ID number
             </li>
-            <li className="flex items-center border-b border-gray-400  border-b-[1px] mb-2">
+            <li className="flex items-center  border-gray-400  border-b-[1px] mb-2">
               <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
               That you are over 18 years old
             </li>
-            <li className="flex items-center border-b border-gray-400  border-b-[1px] mb-2">
+            <li className="flex items-center  border-gray-400  border-b-[1px] mb-2">
               <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
               That your nationality is eligible *
             </li>
