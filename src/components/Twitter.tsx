@@ -41,10 +41,9 @@ export default function SubmitXPost() {
     </div>
   );
 
-
   return (
     <div className="min-h-screen bg-[#14181D] text-gray-100 pt-[64px]  flex flex-col">
-          <BackButton />
+      <BackButton />
       <main className="flex-grow flex flex-col items-center  max-w-2xl mx-auto w-full">
         <div className="flex justify-center ">
           <ProgressStep number={1} active={true} />
@@ -73,10 +72,14 @@ export default function SubmitXPost() {
           </div>
 
           <div className="bg-transparent w-[339px]  border border-[#71797E]  py-[12px] px-[12px]  rounded-[14px] ">
-            <h2 className="text-[16px] font-medium font-[family-name:var(--font-satoshi-sans)]">Details</h2>
+            <h2 className="text-[16px] font-medium font-[family-name:var(--font-satoshi-sans)]">
+              Details
+            </h2>
             <ul className="list-disc list-inside  space-y-[3px] text-gray-300 text-[14px] font-[family-name:var(--font-satoshi-sans)]">
               <li>
-                Your post should contain the <span className="text-blue-500 ">#ConcordiumNet</span> <span className="ml-5">hashtag and mention</span>{" "}
+                Your post should contain the{" "}
+                <span className="text-blue-500 ">#ConcordiumNet</span>{" "}
+                <span className="ml-5">hashtag and mention</span>{" "}
                 <span className="text-blue-500 ">@ConcordiumNet</span>
               </li>
               <li>The text can be anything you want</li>
@@ -97,8 +100,12 @@ export default function SubmitXPost() {
                   className="rounded-full mr-2"
                 />
                 <div>
-                  <p className="font-semibold font-[family-name:var(--font-satoshi-sans)] text-[11px]">Yourname</p>
-                  <p className="text-gray-400 text-[11px] font-[family-name:var(--font-satoshi-sans)]">@yournickname</p>
+                  <p className="font-semibold font-[family-name:var(--font-satoshi-sans)] text-[11px]">
+                    Yourname
+                  </p>
+                  <p className="text-gray-400 text-[11px] font-[family-name:var(--font-satoshi-sans)]">
+                    @yournickname
+                  </p>
                 </div>
               </div>
               <p className="text-[12px] font-normal font-[family-name:var(--font-satoshi-sans)]">
@@ -114,10 +121,11 @@ export default function SubmitXPost() {
             </div>
           </div>
         </div>
-
-        <button className="bg-white mt-[80px] text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs">
-          <Link href="/proof">Continue</Link>
-        </button>
+        <Link href="/proof">
+          <button className="bg-white w-[240px] mt-[80px] text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors  max-w-xs">
+            Continue
+          </button>
+        </Link>
       </main>
     </div>
   );
