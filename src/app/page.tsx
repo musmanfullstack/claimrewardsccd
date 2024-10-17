@@ -3,7 +3,7 @@ import BackButton from "@/components/BackButton";
 import Second from "@/components/Second";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import image1 from "../../public/Images/logo.png";
+import image1 from "../../public/Images/Frame 1958.svg";
 
 export default function Home() {
   const [showLogo, setShowLogo] = useState(true);

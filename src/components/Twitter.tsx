@@ -51,7 +51,7 @@ export default function SubmitXPost() {
           <ProgressStep number={3} active={false} />
         </div>
 
-        <h1 className="text-[24px] mt-[32px] mb-[24px] font-medium text-center font-[family-name:var(--font-satoshi-sans)]">
+        <h1 className="text-[24px] opacity-[100%] mt-[32px] mb-[24px] font-[450] text-[#FFFFFF] text-center font-[family-name:var(--font-satoshi-sans)]">
           Submit X Post Link
         </h1>
 
@@ -66,7 +66,7 @@ export default function SubmitXPost() {
             <input
               type="text"
               id="post-link"
-              className="w-full bg-transparent text-white outline-none text-[14px] font-medium font-[family-name:var(--font-satoshi-sans)]  rounded-md"
+              className="w-full bg-transparent text-white outline-none text-[14px] font-medium font-[family-name:var(--font-satoshi-sans)]  rounded-md placeholder:text-[#ffff]"
               placeholder="https://x.com/coingecko/status/181499..."
             />
           </div>
@@ -76,7 +76,7 @@ export default function SubmitXPost() {
               Details
             </h2>
             <ul className="list-disc list-inside  space-y-[3px] text-gray-300 text-[14px] font-[family-name:var(--font-satoshi-sans)]">
-              <li>
+              <li className="text-[#BFBFBF]">
                 Your post should contain the{" "}
                 <span className="text-blue-500 ">#ConcordiumNet</span>{" "}
                 <span className="ml-5">hashtag and mention</span>{" "}
@@ -93,15 +93,22 @@ export default function SubmitXPost() {
               </button>
               <div className="flex items-center mb-2">
                 <Image
-                  src="/Images/woman.png"
+                  src="/Images/Ellipse 1.svg"
                   width={40}
                   height={40}
                   alt="Profile picture"
                   className="rounded-full mr-2"
                 />
                 <div>
-                  <p className="font-semibold font-[family-name:var(--font-satoshi-sans)] text-[11px]">
+                  <p className="font-bold font-[family-name:var(--font-satoshi-sans)] text-[11px]">
                     Yourname
+                    <Image
+                      src="/Images/Verified.svg"
+                      width={11}
+                      height={11}
+                      alt="Profile picture"
+                      className="rounded-full ml-2 inline "
+                    />
                   </p>
                   <p className="text-gray-400 text-[11px] font-[family-name:var(--font-satoshi-sans)]">
                     @yournickname
@@ -109,13 +116,17 @@ export default function SubmitXPost() {
                 </div>
               </div>
               <p className="text-[12px] font-normal font-[family-name:var(--font-satoshi-sans)]">
-                Just created my @ConcordiumNet account and received 1000 $CCD
-                reward! Go to concordium.com/wallet to get yours!
+                Just created my{" "}
+                <span className="text-[#1DA3F2]">
+                  <a href="https://www.concordium.com/">@ConcordiumNet</a>
+                </span>{" "}
+                account and received 1000 $CCD reward! Go to
+                concordium.com/wallet to get yours!
               </p>
-              <p className="text-teal-500 text-[11px] font-normal">
-                #Concordium
+              <p className="text-[#1DA3F2] text-[12px]">
+                <a href="https://www.concordium.com/">#Concordium</a>
               </p>
-              <p className="text-gray-400 text-xs sm:text-sm">
+              <p className="text-[#8E8E8E] text-xs sm:text-sm">
                 XX:XX PM · Aug XX, 2024
               </p>
             </div>

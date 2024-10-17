@@ -201,9 +201,16 @@ export default function ConnectWallet() {
           </div>
           {qrCodeUrl && selectedWalletOption === "Android CryptoX Wallet" && (
             <p className="mt-[44px] text-[#CCD5D5] text-[12px]">
-              By connecting a wallet, you agree to Concordium Terms of
-              Service and acknowledge that you have read and understand the
-              Concordium Privacy Policy.
+              By connecting a wallet, you agree to{" "}
+              <u>
+                <a href="https://www.concordium.com/">Concordium Terms of Service</a>
+              </u>{" "}
+              and acknowledge that you have read and understand the
+              <u>
+                {" "}
+                <a href="https://www.concordium.com/"> Concordium Privacy Policy</a>
+              </u>
+              .
             </p>
           )}
         </div>
