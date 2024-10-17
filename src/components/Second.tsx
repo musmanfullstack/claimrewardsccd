@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import BackButton from "./BackButton/BackButton";
+import BackButton from "./BackButton";
 
 export default function Component() {
   return (

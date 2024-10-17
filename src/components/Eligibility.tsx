@@ -1,7 +1,7 @@
 "use client";
 import { Check, Plus } from "lucide-react";
 import Link from "next/link";
-import BackButton from "./BackButton/BackButton";
+import BackButton from "./BackButton";
 export default function ProofOfEligibility() {
   const ProgressStep = ({
     number,
@@ -13,7 +13,13 @@ export default function ProofOfEligibility() {
     <div className="flex items-center">
       <div
         className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-          active ? "bg-[#a7f2ec] text-black" : "bg-[#7a7a7a] text-black "
+          active
+            ? number === 2
+              ? "bg-[#ece2cd] text-black" // Step 2 color when active
+              : number === 3
+              ? "bg-[#b6ade6] text-black" // Step 3 color when active
+              : "bg-[#a7f2ec] text-black" // Default active color for other steps
+            : "bg-[#7a7a7a] text-black" // Inactive color
         }`}
       >
         {number}
@@ -21,13 +27,18 @@ export default function ProofOfEligibility() {
       {number < 3 && (
         <div
           className={`h-[2px] w-12 sm:w-24 md:w-32 ${
-            active ? "bg-[#a7f2ec]" : "bg-[#7a7a7a]"
+            active
+              ? number === 2
+                ? "bg-[#ece2cd]"
+                : number === 3
+                ? "bg-[#a7f2ec]" // Step 3 line color when active
+                : "bg-[#a7f2ec]"
+              : "bg-[#7a7a7a]"
           }`}
         ></div>
       )}
     </div>
   );
-
   return (
     <div className="min-h-screen bg-[#14181D] text-gray-100  flex flex-col">
       <span>
@@ -38,7 +49,7 @@ export default function ProofOfEligibility() {
         <div className="flex justify-center w-full ">
           <ProgressStep number={1} active={true} />
           <ProgressStep number={2} active={true} />
-          <ProgressStep number={3} active={false} />
+          <ProgressStep number={3} active={true} />
         </div>
 
         <h1 className="text-[24px] font-medium font-[family-name:var(--font-satoshi-sans)]  mt-[32px]">

@@ -1,5 +1,5 @@
 "use client";
-import BackButton from "@/components/BackButton/BackButton";
+import BackButton from "@/components/BackButton";
 import Second from "@/components/Second";
 import Image from "next/image";
 import { useEffect, useState } from "react";

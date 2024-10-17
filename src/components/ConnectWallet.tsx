@@ -4,10 +4,10 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import QRCode from "qrcode";
 
-import icon from "../../../public/Images/Frame 41371.svg";
-import icon2 from "../../../public/Images/Frame 1958.svg";
+import icon from "../../public/Images/Frame 41371.svg";
+import icon2 from "../../public/Images/Frame 1958.svg";
 import Link from "next/link";
-import BackButton from "../BackButton/BackButton";
+import BackButton from "../components/BackButton";
 
 const ProgressStep = ({
   number,
@@ -65,7 +65,7 @@ export default function ConnectWallet() {
 
   return (
     <div className="min-h-screen bg-[#14181D] text-white pt-[64px]">
-          <BackButton />
+      <BackButton />
       <div className="flex justify-center mb-8">
         <ProgressStep number={1} active={true} />
         <ProgressStep number={2} active={false} />
@@ -107,7 +107,7 @@ export default function ConnectWallet() {
             onClick={() =>
               handleWalletClick(
                 "Android CryptoX Wallet",
-                "https://cryptox-wallet-url.com"
+                "https://github.com/AbdulRehman4481"
               )
             }
             className={`flex items-center justify-between p-4 mt-[4px] 

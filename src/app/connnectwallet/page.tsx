@@ -1,5 +1,5 @@
 import React from "react";
-import ConnectWallet from "@/components/ConnectWallet/ConnectWallet";
+import ConnectWallet from "@/components/ConnectWallet";
 const page = () => {
   return (
     <div>
