@@ -147,7 +147,7 @@ export default function ProofOfEligibility() {
                   </li>
                 </ul>
 
-                <p className="text-[12px] font-normal text-gray-400 font-[family-name:var(--font-satoshi-sans)]">
+                <p className="text-[12px] font-normal pt-[29px] text-gray-400 font-[family-name:var(--font-satoshi-sans)]">
                   * Not eligible nationalities are: USA, Iran, North Korea,
                   occupied regions of Ukraine.
                 </p>
