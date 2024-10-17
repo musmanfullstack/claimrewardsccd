@@ -1,6 +1,7 @@
-import { ArrowLeft, Check } from "lucide-react";
+"use client";
+import { Check, Plus } from "lucide-react";
 import Link from "next/link";
-
+import BackButton from "./BackButton/BackButton";
 export default function ProofOfEligibility() {
   const ProgressStep = ({
     number,
@@ -12,7 +13,7 @@ export default function ProofOfEligibility() {
     <div className="flex items-center">
       <div
         className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-          active ? "bg-teal-500 text-gray-900" : "bg-gray-700 text-gray-400"
+          active ? "bg-[#a7f2ec] text-black" : "bg-[#7a7a7a] text-black "
         }`}
       >
         {number}
@@ -20,7 +21,7 @@ export default function ProofOfEligibility() {
       {number < 3 && (
         <div
           className={`h-[2px] w-12 sm:w-24 md:w-32 ${
-            active ? "bg-teal-500" : "bg-gray-700"
+            active ? "bg-[#a7f2ec]" : "bg-[#7a7a7a]"
           }`}
         ></div>
       )}
@@ -28,53 +29,85 @@ export default function ProofOfEligibility() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-6 flex flex-col">
-      <header className="mb-8">
-        <button className="text-gray-400 hover:text-gray-200 transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-      </header>
+    <div className="min-h-screen bg-[#14181D] text-gray-100  flex flex-col">
+      <span>
+        <BackButton />
+      </span>
 
-      <main className="flex-grow flex flex-col items-center space-y-8 max-w-md mx-auto w-full">
-        <div className="flex justify-center w-full mb-8">
+      <main className="flex-grow pt-[64px] flex flex-col max-w-[339px] items-center  mx-auto ">
+        <div className="flex justify-center w-full ">
           <ProgressStep number={1} active={true} />
           <ProgressStep number={2} active={true} />
-          <ProgressStep number={3} active={true} />
+          <ProgressStep number={3} active={false} />
         </div>
 
-        <h1 className="text-[24px] font-medium mb-8">Proof of eligibility</h1>
+        <h1 className="text-[24px] font-medium font-[family-name:var(--font-satoshi-sans)]  mt-[32px]">
+          Proof of eligibility
+        </h1>
+        <div className="h-[75vh] flex flex-col justify-between mt-[32px]  ">
+          <>
+            <div className="w-[339px] space-y-2">
+              <div className="">
+                <p className="text-[12px] font-medium font-[family-name:var(--font-satoshi-sans)] text-gray-400 ">
+                  User name
+                </p>
+                <p className="border-b border-white text-[16px] font-medium font-[family-name:var(--font-satoshi-sans)]">
+                  John Douglas
+                </p>
+              </div>
 
-        <div className="w-full space-y-2">
-          <div>
-            <p className="text-sm text-gray-400">User name</p>
-            <p className="text-lg">John Douglas</p>
-          </div>
+              <div>
+                <p className="text-[12px] font-medium font-[family-name:var(--font-satoshi-sans)] text-gray-400 ">
+                  Passport number
+                </p>
+                <p className="text-[16px] font-medium font-[family-name:var(--font-satoshi-sans)]   border-b border-white">
+                  US991298
+                </p>
+              </div>
 
-          <div>
-            <p className="text-sm text-gray-400">Passport number</p>
-            <p className="text-lg">US991298</p>
-          </div>
+              <div>
+                <p className="text-[12px] font-medium font-[family-name:var(--font-satoshi-sans)]   text-gray-400">
+                  Age
+                </p>
+                <div className="flex items-center border-b border-white">
+                  <Check size={20} className="text-green-500 mr-2" />
+                  <p className="text-[16px] font-medium font-[family-name:var(--font-satoshi-sans)]   ">
+                    Over 18 years old
+                  </p>
+                </div>
+              </div>
 
-          <div>
-            <p className="text-sm text-gray-400">Age</p>
-            <div className="flex items-center">
-              <Check size={20} className="text-green-500 mr-2" />
-              <p className="text-lg">Over 18 years old</p>
+              <div>
+                <p className="text-[12px] font-medium font-[family-name:var(--font-satoshi-sans)]   text-gray-400">
+                  Your country
+                </p>
+                <div className="flex items-center border-b border-white">
+                  <Plus size={20} className="text-red-500 rotate-45 mr-2" />
+                  <p className="text-[16px] font-medium font-[family-name:var(--font-satoshi-sans)]  ">
+                    Nationality not eligible
+                  </p>
+                </div>
+              </div>
             </div>
+          </>
+
+          <div className="bg-[#CD2E4A1A]/10 rounded-lg p-3 border mt-[40px] border-[#CD2E4A1A]">
+            <h1 className="text-[16px] font-normal text-gray-400 font-[family-name:var(--font-satoshi-sans)]">
+              Not eligible
+            </h1>
+            <p className="text-[12px] font-normal text-gray-400 font-[family-name:var(--font-satoshi-sans)]">
+              Unfortunately your proof of eligibility was not successful. Feel
+              free to try again when you fulfill the criteria on age and
+              nationality.
+            </p>
           </div>
 
-          <div>
-            <p className="text-sm text-gray-400">Your country</p>
-            <div className="flex items-center">
-              <Check size={20} className="text-green-500 mr-2" />
-              <p className="text-lg">Eligible nationality</p>
-            </div>
-          </div>
+          <Link href={"/final"}>
+            <button className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs mt-[110px]">
+              Finish
+            </button>
+          </Link>
         </div>
-
-        <button className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs mt-8">
-          <Link href="/final">Finish</Link>
-        </button>
       </main>
     </div>
   );

@@ -1,59 +1,57 @@
-import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import BackButton from "./BackButton/BackButton";
 
 export default function Component() {
   return (
-    <div
-      className="min-h-screen bg-[#14181D] text-gray-100 p-6 flex flex-col"
-    >
-      <header className="mb-8">
-        <button className="text-gray-400 hover:text-gray-200 transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-      </header>
+    <div className="min-h-screen bg-[#14181D] text-gray-100  flex flex-col max-[450px]:px-5">
+      <BackButton />
+      <main className="flex-grow  flex flex-col items-center pt-[116px] ">
+        <div className="flex flex-col items-center">
+          <h1 className="text-[40px] font-medium text-[#A2CAC1] text-center mb-[32px] font-[family-name:var(--font-satoshi-sans)]">
+            Concordium Rewards
+          </h1>
 
-      <main className="flex-grow flex flex-col items-center justify-center space-y-8">
-        <h1 className="text-4xl font-bold text-[#A2CAC1] text-center">
-          Concordium Rewards
-        </h1>
-
-        <div className=" relative flex items-center space-x-9">
-          <div className="bg-[#A2CAC1] rounded-full p-4 absolute ">
-            <Image
-              src="/Images/twitter.png"
-              alt="twitter"
-              width={24}
-              height={24}
-              className="text-gray-900"
-            ></Image>
+          <div className=" relative flex items-center space-x-12 mb-[64px]">
+            <div className=" absolute ">
+              <Image
+                src="/Images/Frame 1983.svg"
+                alt="twitter"
+                width={74.67}
+                height={74.67}
+                className="text-gray-900"
+              ></Image>
+            </div>
+            <div className="">
+              <Image
+                src="/Images/Frame 1984.svg"
+                alt="Concordium logo"
+                width={74.67}
+                height={74.67}
+                className="text-gray-300"
+              />
+            </div>
           </div>
-          <div className="bg-gray-700 rounded-full p-4">
-            <Image
-              src="/Images/logo.png"
-              alt="Concordium logo"
-              width={24}
-              height={24}
-              className="text-gray-300"
-            />
+
+          <div className="">
+            <h2 className=" text-xl font-bold  leading-[32px] text-[#A2CAC1] mb-4 font-[family-name:var(--font-satoshi-sans)]">
+              Create post on X and get 1,000 CCD:
+            </h2>
+            <ol className="space-y-[18px] list-decimal list-inside text-[14px] font-normal font-[family-name:var(--font-satoshi-sans)]">
+              <li>Connect your wallet</li>
+              <li>
+                Post about Concordium on X (Twitter) with the #Concordium <br />{" "}
+                <span className="ml-[16px]">hashtag</span>
+              </li>
+              <li>Confirm that you are of eligible age and nationality</li>
+            </ol>
           </div>
+          <Link href={"/connnectwallet"}>
+            <button className="bg-white mt-[130px]  text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors">
+              Get started
+            </button>
+          </Link>
         </div>
-
-        <div className="max-w-md w-full">
-          <h2 className="text-xl font-semibold text-[#A2CAC1] mb-4">
-            Create post on X and get 1,000 CCD:
-          </h2>
-          <ol className="space-y-3 list-decimal list-inside">
-            <li>Connect your wallet</li>
-            <li>
-              Post about Concordium on X (Twitter) with the #Concordium hashtag
-            </li>
-            <li>Confirm that you are of eligible age and nationality</li>
-          </ol>
-        </div>
-
-        <button className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors">
-          <a href="/connnectwallet">Get started</a>
-        </button>
       </main>
     </div>
   );

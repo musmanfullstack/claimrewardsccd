@@ -1,23 +1,12 @@
+import Image from 'next/image'
 import React from 'react'
-
+import image from "../../public/Images/30bc3a50-a6d2-426d-946e-4975ad0e1f20.png"
 export default function SkeletonLoading() {
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center p-4">
       <p className="text-gray-400 mb-8">Fetching data, please wait</p>
       
-      <div className="bg-gray-900 rounded-lg p-6 w-full max-w-sm">
-        <div className="flex flex-col items-center">
-          <div className="w-24 h-24 bg-gray-800 rounded-lg mb-4"></div>
-          <div className="w-3/4 h-4 bg-gray-800 rounded mb-2"></div>
-          <div className="w-1/2 h-4 bg-gray-800 rounded mb-4"></div>
-        </div>
-        
-        <div className="space-y-2">
-          <div className="w-full h-4 bg-gray-800 rounded"></div>
-          <div className="w-5/6 h-4 bg-gray-800 rounded"></div>
-          <div className="w-4/6 h-4 bg-gray-800 rounded"></div>
-        </div>
-      </div>
+      <Image src={image} alt="dlka" />
     </div>
   )
 }
