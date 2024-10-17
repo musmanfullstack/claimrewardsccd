@@ -102,7 +102,7 @@ export default function SubmitXPost() {
           </div>
         </div>
 
-        <button className="bg-white mt-[96px] text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs">
+        <button className="bg-white mt-[80px] text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs">
           <Link href="/proof">Continue</Link>
         </button>
       </main>

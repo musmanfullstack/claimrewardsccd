@@ -44,7 +44,7 @@ export default function ProofOfEligibility() {
         <h1 className="text-[24px] font-medium font-[family-name:var(--font-satoshi-sans)]  mt-[32px]">
           Proof of eligibility
         </h1>
-        <div className="h-[75vh] flex flex-col justify-between mt-[32px]  ">
+        <div className="h-[65vh] flex flex-col justify-between mt-[32px]  ">
           <>
             <div className="w-[339px] space-y-2">
               <div className="">

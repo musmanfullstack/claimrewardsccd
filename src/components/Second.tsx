@@ -47,7 +47,7 @@ export default function Component() {
             </ol>
           </div>
           <Link href={"/connnectwallet"}>
-            <button className="bg-white mt-[130px]  text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors">
+            <button className="bg-white mt-[140px] w-[239px] h-[56px]  text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors">
               Get started
             </button>
           </Link>
