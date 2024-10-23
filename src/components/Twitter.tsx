@@ -42,7 +42,7 @@ export default function SubmitXPost() {
   );
 
   return (
-    <div className="min-h-screen bg-[#14181D] text-gray-100 pt-[64px]  flex flex-col">
+    <div className="min-h-screen bg-[#14181D] text-gray-100 pt-[64px]  flex flex-col pb-2">
       <BackButton />
       <main className="flex-grow flex flex-col items-center  max-w-2xl mx-auto w-full">
         <div className="flex justify-center ">

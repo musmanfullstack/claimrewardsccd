@@ -8,6 +8,11 @@ import icon from "../../public/Images/Frame 41371.svg";
 import icon2 from "../../public/Images/Frame 1958.svg";
 import Link from "next/link";
 import BackButton from "../components/BackButton";
+import {
+  detectConcordiumProvider,
+} from '@concordium/browser-wallet-api-helpers';
+import { Web3StatementBuilder } from '@concordium/web-sdk';
+
 
 const ProgressStep = ({
   number,
@@ -18,17 +23,15 @@ const ProgressStep = ({
 }) => (
   <div className="flex items-center">
     <div
-      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-        active ? "bg-[#a7f2ec] text-black" : "bg-[#7a7a7a] text-black "
-      }`}
+      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${active ? "bg-[#a7f2ec] text-black" : "bg-[#7a7a7a] text-black "
+        }`}
     >
       {number}
     </div>
     {number < 3 && (
       <div
-        className={`h-[2px] w-12 sm:w-24 md:w-32 ${
-          active ? "bg-[#a7f2ec]" : "bg-[#7a7a7a]"
-        }`}
+        className={`h-[2px] w-12 sm:w-24 md:w-32 ${active ? "bg-[#a7f2ec]" : "bg-[#7a7a7a]"
+          }`}
       ></div>
     )}
   </div>
@@ -48,7 +51,72 @@ export default function ConnectWallet() {
       console.error("Failed to generate QR code", error);
     }
   };
+  const connectConcordiumWallet = async () => {
+    try {
+      console.log("Connecting to wallet...");
 
+      const provider = await detectConcordiumProvider();
+
+      // Request account from the provider
+      const accounts = await provider.requestAccounts();
+      const accountAddress = accounts[0]; // Assume the first account
+
+      console.log("Connected account:", accountAddress);
+
+      const url = 'http://localhost:8080/v0/verify'; // Adjust the port if necessary
+
+      // Verifiable presentation payload (replace with actual presentation)
+      const verifiablePresentation = {
+        type: 'VerifiablePresentation',
+        context: ['https://www.w3.org/2018/credentials/v1'],
+        verifiableCredential: [
+          {
+            id: 'http://example.edu/credentials/3732',
+            type: ['VerifiableCredential'],
+            issuer: 'https://example.edu/issuers/14',
+            issuanceDate: '2020-03-10T04:24:12.164Z',
+            credentialSubject: {
+              id: 'did:example:ebfeb1f712ebc6f1c276e12ec21',
+              degree: {
+                type: 'BachelorDegree',
+                name: 'Bachelor of Science in Computer Science',
+              },
+            },
+          },
+        ],
+        proof: {
+          type: 'Ed25519Signature2018',
+          created: '2020-04-22T10:37:22Z',
+          verificationMethod: 'https://example.edu/issuers/keys/1',
+          proofPurpose: 'assertionMethod',
+          jws: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9...',
+        },
+      };
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(verifiablePresentation),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log('Verification response:', data);
+      } catch (error) {
+        console.error('Error verifying presentation:', error);
+      }
+
+
+    } catch (error) {
+      console.error("Failed to connect to Concordium wallet or retrieve identity attributes", error);
+    }
+  };
   const handleWalletClick = (walletName: string, walletUrl: string) => {
     if (selectedWalletOption === walletName) {
       setSelectedWalletOption(null);
@@ -61,10 +129,13 @@ export default function ConnectWallet() {
         setQrCodeUrl(null);
       }
     }
+    if (walletName === "Browser Wallet") {
+      connectConcordiumWallet()
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#14181D] text-white pt-[64px]">
+    <div className="min-h-screen bg-[#14181D] text-white pt-[64px] pb-2">
       <BackButton />
       <div className="flex justify-center mb-8">
         <ProgressStep number={1} active={true} />
@@ -91,14 +162,12 @@ export default function ConnectWallet() {
               </span>
             </div>
             <div
-              className={`border rounded-full ${
-                selectedWalletOption === "Browser Wallet" ? "border-white" : ""
-              }`}
+              className={`border rounded-full ${selectedWalletOption === "Browser Wallet" ? "border-white" : ""
+                }`}
             >
               <h1
-                className={`w-[14px] h-[14px] m-[2px] rounded-full ${
-                  selectedWalletOption === "Browser Wallet" ? "bg-white" : ""
-                }`}
+                className={`w-[14px] h-[14px] m-[2px] rounded-full ${selectedWalletOption === "Browser Wallet" ? "bg-white" : ""
+                  }`}
               ></h1>
             </div>
           </div>
@@ -111,10 +180,9 @@ export default function ConnectWallet() {
               )
             }
             className={`flex items-center justify-between p-4 mt-[4px] 
-              ${
-                selectedWalletOption === "Android CryptoX Wallet"
-                  ? "rounded-t-lg "
-                  : "rounded-lg"
+              ${selectedWalletOption === "Android CryptoX Wallet"
+                ? "rounded-t-lg "
+                : "rounded-lg"
               }
                cursor-pointer bg-[#1B2323]`}
           >
@@ -129,18 +197,16 @@ export default function ConnectWallet() {
               </span>
             </div>
             <div
-              className={`border rounded-full ${
-                selectedWalletOption === "Android CryptoX Wallet"
-                  ? "border-white"
-                  : ""
-              }`}
+              className={`border rounded-full ${selectedWalletOption === "Android CryptoX Wallet"
+                ? "border-white"
+                : ""
+                }`}
             >
               <h1
-                className={`w-[14px] h-[14px] m-[2px] rounded-full ${
-                  selectedWalletOption === "Android CryptoX Wallet"
-                    ? "bg-white"
-                    : ""
-                }`}
+                className={`w-[14px] h-[14px] m-[2px] rounded-full ${selectedWalletOption === "Android CryptoX Wallet"
+                  ? "bg-white"
+                  : ""
+                  }`}
               ></h1>
             </div>
           </div>
@@ -184,21 +250,28 @@ export default function ConnectWallet() {
               </span>
             </div>
             <div
-              className={`border rounded-full ${
-                selectedWalletOption === "IOS CryptoX Wallet"
-                  ? "border-white"
-                  : ""
-              }`}
+              className={`border rounded-full ${selectedWalletOption === "IOS CryptoX Wallet"
+                ? "border-white"
+                : ""
+                }`}
             >
               <h1
-                className={`w-[14px] h-[14px] m-[2px] rounded-full ${
-                  selectedWalletOption === "IOS CryptoX Wallet"
-                    ? "bg-white"
-                    : ""
-                }`}
+                className={`w-[14px] h-[14px] m-[2px] rounded-full ${selectedWalletOption === "IOS CryptoX Wallet"
+                  ? "bg-white"
+                  : ""
+                  }`}
               ></h1>
             </div>
           </div>
+          {/* {selectedWalletOption === "Browser Wallet" && (
+            <div className="flex justify-center items-center w-full">
+              <button onClick={(e) => {
+                connectConcordiumWallet()
+              }} className="bg-white w-[240px] mt-4 text-gray-900 font-semibold py-2 sm:py-3 px-6 rounded-full hover:bg-gray-200 transition-colors max-w-xs">
+                Connect Wallet
+              </button>
+            </div>
+          )} */}
           {qrCodeUrl && selectedWalletOption === "Android CryptoX Wallet" && (
             <p className="mt-[44px] text-[#CCD5D5] text-[12px]">
               By connecting a wallet, you agree to{" "}
@@ -213,6 +286,7 @@ export default function ConnectWallet() {
               .
             </p>
           )}
+
         </div>
       </div>
     </div>
