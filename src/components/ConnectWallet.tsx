@@ -11,7 +11,6 @@ import BackButton from "../components/BackButton";
 import {
   detectConcordiumProvider,
 } from '@concordium/browser-wallet-api-helpers';
-import { Web3StatementBuilder } from '@concordium/web-sdk';
 
 
 const ProgressStep = ({
