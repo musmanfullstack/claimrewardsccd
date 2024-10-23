@@ -1,7 +1,9 @@
+'use client'
 import { Copy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import BackButton from "./BackButton";
+import axios from 'axios';
 
 export default function SubmitXPost() {
   const ProgressStep = ({
@@ -13,33 +15,120 @@ export default function SubmitXPost() {
   }) => (
     <div className="flex items-center">
       <div
-        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-          active
-            ? number === 2
-              ? "bg-[#ece2cd] text-black" // Step 2 color when active
-              : number === 3
+        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${active
+          ? number === 2
+            ? "bg-[#ece2cd] text-black" // Step 2 color when active
+            : number === 3
               ? "bg-[#b6ade6] text-black" // Step 3 color when active
               : "bg-[#a7f2ec] text-black" // Default active color for other steps
-            : "bg-[#7a7a7a] text-black" // Inactive color
-        }`}
+          : "bg-[#7a7a7a] text-black" // Inactive color
+          }`}
       >
         {number}
       </div>
       {number < 3 && (
         <div
-          className={`h-[2px] w-12 sm:w-24 md:w-32 ${
-            active
-              ? number === 2
-                ? "bg-[#ece2cd]"
-                : number === 3
+          className={`h-[2px] w-12 sm:w-24 md:w-32 ${active
+            ? number === 2
+              ? "bg-[#ece2cd]"
+              : number === 3
                 ? "bg-[#a7f2ec]" // Step 3 line color when active
                 : "bg-[#a7f2ec]"
-              : "bg-[#7a7a7a]"
-          }`}
+            : "bg-[#7a7a7a]"
+            }`}
         ></div>
       )}
     </div>
   );
+
+
+  async function getUserTimeline() {
+    const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';  // Corrected base URL
+
+    try {
+      const response = await axios.get(url, {
+        headers: {
+          'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAALBAwgEAAAAAOjAESM2o6hFRWKR5mgPAqXjtIFY%3DqKv0l8LAFaoUeVARaqCkeq9AaTL7GSmE70m8pxNmHI068LxKiq',
+          'User-Agent': 'My Twitter App v1.0.23',
+          'Accept-Encoding': 'gzip',
+        },
+        params: {
+          count: 100,
+          screen_name: 'twitterapi', // Correct and valid Twitter username
+        },
+      });
+
+      console.log('User timeline response:', response.data);
+      return response.data;
+    } catch (error:any) {
+      if (error.response) {
+        // The request was made, and the server responded with a status code not in the 2xx range
+        console.error('Response error:', error.response.status, error.response.data);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('Request error:', error.request);
+      } else {
+        // Something else caused the error
+        console.error('Error:', error.message);
+      }
+      throw error;
+    }
+  }
+
+
+
+  async function getToken() {
+    const url = 'https://api.x.com/oauth2/token';
+    const consumerKey = 'h5otdzFyQeqMuoxYhgSZAcw89';
+    const consumerSecret = 'TZmg4vnJA6cBmD8t9nFgRvCie11o9mDYrqBizJgCeOEbkVcNEY';
+    const credentials = `${consumerKey}:${consumerSecret}`;
+    console.log('credentials:', credentials);
+    let encodedCredentials = Buffer.from(credentials).toString('base64');
+    encodedCredentials = "aDVvdGR6RnlRZXFNdW94WWhnU1pBY3c4OTpUWm1nNHZuSkE2Y0JtRDh0OW5GZ1J2Q2llMTFvOW1EWXJxQml6SmdDZU9FYmtWY05FWQ=="
+    console.log('encodedCredentials:', encodedCredentials);
+    try {
+      const response = await axios.post(url, 'grant_type=client_credentials', {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          'Authorization': `Basic ${encodedCredentials}`,
+          'User-Agent': 'My Twitter App v1.0.23',
+          'Accept-Encoding': 'gzip',
+        }
+      });
+
+      console.log('Token response:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching token:', error);
+      throw error;
+    }
+  }
+
+  const onChangeInput = async () => {
+    getUserTimeline()
+    // getToken()
+    return
+    console.log("on change")
+    try {
+      const BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAALBAwgEAAAAAxux%2FQ%2F1PYImZrrJbLOdQlXrUH38%3D0VfNSIElVKjDvjIZf9Y6NyTaRYb85xtiah4nbFF4zWpdgjesqi"; // Make sure to store this in your environment variables
+      const tweetUrl = "https://x.com/america/status/1848901042848530561"
+      // const response = await axios.post('/api/getTweet', { tweetUrl });
+
+      const tweetId = tweetUrl.split('/').pop();
+      console.log("tweetId", tweetId)
+      const response = await axios.get(`https://api.x.com/2/tweets/${tweetId}`, {
+        headers: {
+          'Authorization': `Bearer ${BEARER_TOKEN}`
+        },
+        // params: {
+        //     'tweet.fields': 'text,author_id,created_at'
+        // }
+      });
+      console.log("response", response)
+    } catch (err) {
+      console.log('Error fetching tweet content.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#14181D] text-gray-100 pt-[64px]  flex flex-col pb-2">
@@ -68,6 +157,9 @@ export default function SubmitXPost() {
               id="post-link"
               className="w-full bg-transparent text-white outline-none text-[14px] font-medium font-[family-name:var(--font-satoshi-sans)]  rounded-md placeholder:text-[#ffff]"
               placeholder="https://x.com/coingecko/status/181499..."
+              onChange={() => {
+                onChangeInput()
+              }}
             />
           </div>
 
