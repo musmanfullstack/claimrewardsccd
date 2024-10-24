@@ -22,6 +22,7 @@ export async function POST(req: Request) {
 
         return NextResponse.json(response.data);
     } catch (error) {
+        console.log("Error:", error)
         return NextResponse.json({ error: 'Unable to fetch tweet' }, { status: 500 });
     }
 }
