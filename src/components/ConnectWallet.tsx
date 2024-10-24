@@ -37,7 +37,7 @@ const ProgressStep = ({
 );
 
 export default function ConnectWallet() {
-  
+
 
   const [qrCodeUrl, setQrCodeUrl] = useState<string | null>(null);
   const [selectedWalletOption, setSelectedWalletOption] = useState<
@@ -59,8 +59,14 @@ export default function ConnectWallet() {
       const provider = await detectConcordiumProvider();
 
       // Request account from the provider
-      const accounts = await provider.requestAccounts();
-      const accountAddress = accounts[0]; // Assume the first account
+      let accounts: any = [];
+      let accountAddress = ""; // Assume the first account
+      while (accounts.length < 1) {
+        console.log("Loop")
+        accounts = await provider.connect(); 
+        console.log("accounts", accounts)
+      }
+      accountAddress = accounts
 
       console.log("Connected account:", accountAddress);
 
