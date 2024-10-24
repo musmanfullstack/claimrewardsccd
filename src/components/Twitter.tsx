@@ -3,7 +3,7 @@ import { Copy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import BackButton from "./BackButton";
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function SubmitXPost() {
   const ProgressStep = ({
