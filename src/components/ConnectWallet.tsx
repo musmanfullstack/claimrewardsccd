@@ -11,7 +11,6 @@ import BackButton from "../components/BackButton";
 import {
   detectConcordiumProvider,
 } from '@concordium/browser-wallet-api-helpers';
-import { TwitterApi } from 'twitter-api-v2';
 
 
 const ProgressStep = ({
@@ -38,8 +37,8 @@ const ProgressStep = ({
 );
 
 export default function ConnectWallet() {
-  const twitterClient = new TwitterApi('912835524137766913-UxCtfiNNjdFf7ZSEcpRo4prJZdtQWWe');
   
+
   const [qrCodeUrl, setQrCodeUrl] = useState<string | null>(null);
   const [selectedWalletOption, setSelectedWalletOption] = useState<
     string | null

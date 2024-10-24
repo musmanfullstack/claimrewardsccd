@@ -60,7 +60,7 @@ export default function SubmitXPost() {
 
       console.log('User timeline response:', response.data);
       return response.data;
-    } catch (error:any) {
+    } catch (error: any) {
       if (error.response) {
         // The request was made, and the server responded with a status code not in the 2xx range
         console.error('Response error:', error.response.status, error.response.data);
@@ -105,7 +105,10 @@ export default function SubmitXPost() {
   }
 
   const onChangeInput = async () => {
-    getUserTimeline()
+    const res = await fetch('/api/tweet_app');
+    const data = await res.json();
+    console.log("data", data)
+    // getUserTimeline()
     // getToken()
     return
     console.log("on change")
