@@ -63,7 +63,7 @@ export default function ConnectWallet() {
       let accountAddress = ""; // Assume the first account
       while (accounts.length < 1) {
         console.log("Loop")
-        accounts = await provider.connect(); 
+        accounts = await provider.connect();
         console.log("accounts", accounts)
       }
       accountAddress = accounts
@@ -179,6 +179,23 @@ export default function ConnectWallet() {
             </div>
           </div>
 
+          {selectedWalletOption === "Browser Wallet" && (
+            <div className="bg-[#1B2323] flex flex-col mb-[4px] p-2 items-center rounded-b-lg">
+              <p className="mb-4 text-center flex flex-row text-[14px] items-center font-[family-name:var(--font-satoshi-sans)]  font-normal">
+                {" "}
+                <Link href={"/twiter"}>
+                  <button className="flex bg-[#383E40] justify-center items-center text-[14px] font-[family-name:var(--font-satoshi-sans)]  font-normal p-2 rounded-md ml-2">
+                    Next{" "}
+                    <ArrowLeft
+                      size={14}
+                      className="-rotate-180 ml-2 text-[14px]"
+                    />
+                  </button>
+                </Link>
+              </p>
+            </div>
+          )}
+
           <div
             onClick={() =>
               handleWalletClick(
@@ -241,15 +258,16 @@ export default function ConnectWallet() {
               />
             </div>
           )}
+
           <div
-            onClick={() => handleWalletClick("", "")}
+            onClick={() => handleWalletClick("iOS CryptoX Wallet", "https://apps.apple.com/lv/app/cryptox-concordium-wallet/id1593386457")}
             className={`flex items-center justify-between rounded-lg p-4 mt-[4px] 
-               cursor-pointer bg-transparent border-[1px] border-gray-500 bg-gray-800 opacity-50`}
+               cursor-pointer bg-[#1B2323]`}
           >
             <div className="flex items-center space-x-3">
               <Image
                 src={icon2}
-                alt="IOS CryptoX Wallet"
+                alt="iOS CryptoX Wallet"
                 className="w-[28px] h-[28px]"
               />
               <span className="text-[16px] font-medium font-[family-name:var(--font-satoshi-sans)] text-white">
@@ -257,19 +275,42 @@ export default function ConnectWallet() {
               </span>
             </div>
             <div
-              className={`border rounded-full ${selectedWalletOption === "IOS CryptoX Wallet"
+              className={`border rounded-full ${selectedWalletOption === "iOS CryptoX Wallet"
                 ? "border-white"
                 : ""
                 }`}
             >
               <h1
-                className={`w-[14px] h-[14px] m-[2px] rounded-full ${selectedWalletOption === "IOS CryptoX Wallet"
+                className={`w-[14px] h-[14px] m-[2px] rounded-full ${selectedWalletOption === "iOS CryptoX Wallet"
                   ? "bg-white"
                   : ""
                   }`}
               ></h1>
             </div>
           </div>
+          {qrCodeUrl && selectedWalletOption === "iOS CryptoX Wallet" && (
+            <div className="bg-[#1B2323] flex flex-col mb-[4px] p-2 items-center rounded-b-lg">
+              <p className="mb-4 text-center flex flex-row text-[14px] items-center font-[family-name:var(--font-satoshi-sans)]  font-normal">
+                Scan the QR code Or{" "}
+                <Link href={"/twiter"}>
+                  <button className="flex bg-[#383E40] justify-center items-center text-[14px] font-[family-name:var(--font-satoshi-sans)]  font-normal p-2 rounded-md ml-2">
+                    Tap here{" "}
+                    <ArrowLeft
+                      size={14}
+                      className="-rotate-180 ml-2 text-[14px]"
+                    />
+                  </button>
+                </Link>
+              </p>
+              <Image
+                src={qrCodeUrl}
+                alt="QR Code"
+                className="rounded-lg mb-2"
+                width={200}
+                height={200}
+              />
+            </div>
+          )}
           {/* {selectedWalletOption === "Browser Wallet" && (
             <div className="flex justify-center items-center w-full">
               <button onClick={(e) => {
