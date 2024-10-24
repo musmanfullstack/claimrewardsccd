@@ -183,7 +183,7 @@ export default function ConnectWallet() {
             onClick={() =>
               handleWalletClick(
                 "Android CryptoX Wallet",
-                "https://github.com/AbdulRehman4481"
+                "https://play.google.com/store/apps/details?id=com.pioneeringtechventures.wallet&hl=en"
               )
             }
             className={`flex items-center justify-between p-4 mt-[4px] 
