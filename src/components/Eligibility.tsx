@@ -114,10 +114,10 @@ export default function ProofOfEligibility() {
           </div>
 
           <Link href={"/final"}>
-            <button className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs mt-[110px]">
-              Finish
-            </button>
-          </Link>
+                <button className="bg-white mt-5 text-gray-900 font-semibold py-3 px-6 rounded-full hover:bg-gray-200 transition-colors w-full max-w-xs ">
+                  Finish
+                </button>
+              </Link>
         </div>
       </main>
     </div>

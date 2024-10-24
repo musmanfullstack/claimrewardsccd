@@ -179,7 +179,7 @@ export default function ConnectWallet() {
             </div>
           </div>
 
-          {selectedWalletOption === "Browser Wallet" && (
+          {/* {selectedWalletOption === "Browser Wallet" && (
             <div className="bg-[#1B2323] flex flex-col mb-[4px] p-2 items-center rounded-b-lg">
               <p className="mb-4 text-center flex flex-row text-[14px] items-center font-[family-name:var(--font-satoshi-sans)]  font-normal">
                 {" "}
@@ -194,7 +194,7 @@ export default function ConnectWallet() {
                 </Link>
               </p>
             </div>
-          )}
+          )} */}
 
           <div
             onClick={() =>
